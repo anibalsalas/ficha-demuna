@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+    <head>
+        <title>Supervisi&oacute;n Demuna</title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="icon" th:href="@{/image/favicon.ico}" type="image/ico" />
+        <!-- Bootstrap -->
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>        
+        <link rel="stylesheet" th:href="@{/css/bootstrap-icons.css}"/>        
+        <link rel="stylesheet" th:href="@{/css/custom.min.css}"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet"th:href="@{/webjars/fortawesome__fontawesome-free/6.4.0/css/all.min.css}" />
+
+        <script th:src="@{/webjars/jquery/3.6.3/jquery.min.js}" ></script>
+        <script th:src="@{/webjars/jquery.inputmask/5.0.7/jquery.inputmask.min.js}"></script>     
+    </head>
+    <body>
+        <main>       
+            <div class="container">
+
+                <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                                <!--div class="d-flex justify-content-center py-4">                                    
+                                    <span class="d-none d-lg-block"  th:text="." id="msg" ></span> 
+                                </div -->
+
+                                <div class="card mb-3">
+
+                                    <div class="card-body">
+
+                                        <div class="pt-4 pb-2">
+                                            <center> <span class="d-none d-lg-block"  th:text="." id="msg" ></span> </center>
+                                            <h5 class="card-title text-center pb-0 fs-4">Acceder al sistema</h5>
+                                            <p class="text-center small">Ingrese usuario y contraseña</p>
+                                        </div>
+
+                                        <form class="row g-3 needs-validation" method="POST" th:action="@{/login}">
+                                            <p style="color:#06c; font-weight: bold; font-size:46px;" class="text-center"> Supervisión Demuna</p>
+                                            <!-- h1 class="text-center">PAPELETAS</h1 -->
+
+
+                                            <div class="col-12">
+                                                <div class="input-group mb-2">
+                                                    <select id="tipo_usuario" name="tipo_usuario" class="form-select">
+                                                        <option value="A">USUARIO DP</option>
+                                                        <option value="B">USUARIO EXTERNO</option>
+                                                        <option value="C">ESPECIALISTA DP</option>
+                                                    </select>
+                                                    <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-filter"></i></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="input-group mb-2">
+                                                    <input id="username" name="username" type="text" class="form-control form-control-sm" placeholder="Usuario" th:required="true"/>
+                                                    <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-user"></i></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="input-group mb-2">
+                                                    <input size="20" th:minlength="4" th:maxlength="40"
+                                                           id="password" name="password" type="password" class="form-control form-control-sm" placeholder="Contrase&ntilde;a" th:required="true"/>
+                                                    <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-key"></i></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 div_cod_unico">
+                                                <div class="input-group mb-2">
+                                                    <input id="cod_unico" name="cod_unico" minlength="11" maxlength="11" type="number" class="form-control form-control-sm" placeholder="N&deg; RUC" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
+                                                    <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-building"></i></span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-12">
+                                                <!-- div class="form-check" -->
+                                                <input class="form-check-input" id="remember-me" name="remember-me" type="checkbox"></input>   
+                                                <label class="form-check-label" for="rememberMe">Permanecer conectado</label>
+                                                <!-- /div-->
+                                            </div>
+
+                                            <div class="col-12">
+                                                <button class="btn btn-primary w-100" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Ingresar</button>
+                                            </div>
+
+                                            <div class="text-center" th:if="${param.error}">
+                                                <label   style="font-size:large; color: red;">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</label> 
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="credits">
+                                    <label class="text-center"> &copy; 2024 Derechos reservados. OTITD</label>
+                                    <br>
+                                        <div class="text-center">
+                                            <a href="https://www.defensoria.gob.pe/">  Defensor&iacute;a del Pueblo</a>
+                                            <!--<img th:src="@{/image/logo.png}" width="20" height="20">-->
+                                        </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <script type="text/javascript">
+
+
+                $(document).ready(function () {
+
+                    validar_tipo_usuario();
+
+                    $(document).on('change', '#tipo_usuario', function () {
+                        validar_tipo_usuario();
+                        $("#cod_unico").val("");
+                    });
+                });
+
+                function validar_tipo_usuario() {
+
+                    var tipo_usuario = $("#tipo_usuario").val();
+
+                    if (tipo_usuario === "A") {//usuario de la dp
+
+                        $(".div_cod_unico").show();
+                        $("#cod_unico").prop("required", true);
+
+                    } else if (tipo_usuario === "B") {//usuario externo
+                        $(".div_cod_unico").hide();
+                        $("#cod_unico").prop("required", false);
+
+                    } else if (tipo_usuario === "C") {//epecialista externo
+                        $(".div_cod_unico").hide();
+                        $("#cod_unico").prop("required", false);
+                    }
+                }
+
+                var getBrowserInfo = function () {
+                    var ua = navigator.userAgent, tem,
+                            M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+                    if (/trident/i.test(M[1])) {
+                        tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+                        return 'IE ' + (tem[1] || '');
+                    }
+                    if (M[1] === 'Chrome') {
+                        tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
+                        if (tem != null)
+                            return tem.slice(1).join(' ').replace('OPR', 'Opera');
+                    }
+                    M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+                    if ((tem = ua.match(/version\/(\d+)/i)) != null)
+                        M.splice(1, 1, tem[1]);
+                    return M.join(' ');
+                };
+
+                document.getElementById("msg").textContent = getBrowserInfo();
+            </script>
+        </main>
+    </body>
+</html>
